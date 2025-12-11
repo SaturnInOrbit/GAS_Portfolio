@@ -1,0 +1,617 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #333333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Portfolio Container */
+.portfolio-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FCFDFF;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(163, 201, 244, 0.02) 2px, rgba(163, 201, 244, 0.02) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(163, 201, 244, 0.02) 2px, rgba(163, 201, 244, 0.02) 4px);
+}
+
+/* Fixed Navigation Bar - Solid Dark Navy */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #0D1B2A;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(13, 27, 42, 0.1);
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-size: 0.925rem;
+  font-weight: 400;
+  position: relative;
+  transition: all 0.25s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.nav-button:hover {
+  color: #A3C9F4;
+}
+
+.nav-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #A3C9F4;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+  border-radius: 2px;
+}
+
+.nav-button:hover::after,
+.nav-button.active::after {
+  transform: scaleX(1);
+}
+
+.nav-button.active {
+  color: #A3C9F4;
+  font-weight: 500;
+}
+
+/* Content Card - Floating Paper */
+.content-card {
+  max-width: 960px;
+  margin: 80px auto 60px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+/* Hero Section - Inside Content Card */
+.hero {
+  padding: 4.5rem 3.5rem 4rem;
+  border-bottom: 1px solid #E8ECF1;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.75rem;
+  font-weight: 600;
+  margin: 0 0 1.25rem;
+  line-height: 1.3;
+  color: #1E3A5F;
+  letter-spacing: -0.02em;
+}
+
+.hero-intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #333333;
+  margin: 0 0 3rem;
+  font-weight: 300;
+}
+
+/* Essay Selector Pills - Sky Blue Borders */
+.essay-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.essay-pill {
+  background: transparent;
+  border: 1.5px solid #A3C9F4;
+  border-radius: 24px;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.essay-pill:hover {
+  background-color: #F0F7FF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(163, 201, 244, 0.12);
+}
+
+.essay-pill:active {
+  transform: translateY(0);
+}
+
+.essay-pill.active {
+  background-color: #A3C9F4;
+  border-color: #A3C9F4;
+  box-shadow: 0 4px 16px rgba(163, 201, 244, 0.2);
+}
+
+.essay-pill.active .pill-title,
+.essay-pill.active .pill-subtitle {
+  color: #FFFFFF;
+}
+
+.pill-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #1E3A5F;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.pill-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8125rem;
+  color: #6B7280;
+  font-weight: 400;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+/* Main Content */
+.main-content {
+  padding: 0;
+}
+
+.content-section {
+  display: none;
+  opacity: 0;
+}
+
+.content-section.active {
+  display: block;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Essay Styles */
+.essay {
+  padding: 3.5rem 3.5rem 4rem;
+}
+
+.essay-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #1E3A5F;
+  line-height: 1.3;
+  margin: 0 0 2rem;
+  letter-spacing: -0.02em;
+}
+
+.essay-meta {
+  background: #F8FAFB;
+  padding: 1.5rem 1.75rem;
+  border-left: 3px solid #A3C9F4;
+  margin-bottom: 2.5rem;
+  border-radius: 4px;
+}
+
+.essay-meta p {
+  margin: 0.5rem 0;
+  font-size: 0.9375rem;
+  color: #4A5568;
+  line-height: 1.6;
+}
+
+.essay-meta strong {
+  color: #1E3A5F;
+  font-weight: 500;
+}
+
+.essay-meta a {
+  color: #1E3A5F;
+  text-decoration: none;
+  border-bottom: 1px solid #A3C9F4;
+  transition: all 0.2s ease;
+  padding-bottom: 1px;
+}
+
+.essay-meta a:hover {
+  color: #A3C9F4;
+  border-bottom-color: transparent;
+}
+
+/* Essay Content Typography */
+.essay-intro,
+.essay-body {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #333333;
+}
+
+.essay-intro p,
+.essay-body p {
+  margin-bottom: 1.75rem;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.essay-body h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.625rem;
+  font-weight: 600;
+  color: #1E3A5F;
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  padding-top: 2.5rem;
+  border-top: 1px solid #E8ECF1;
+}
+
+.essay-body h3:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.essay-body a {
+  color: #1E3A5F;
+  text-decoration: none;
+  border-bottom: 1px solid #A3C9F4;
+  transition: all 0.2s ease;
+  padding-bottom: 1px;
+}
+
+.essay-body a:hover {
+  color: #A3C9F4;
+  border-bottom-color: transparent;
+}
+
+.essay-body strong {
+  font-weight: 500;
+  color: #1E3A5F;
+}
+
+.essay-body em {
+  font-style: italic;
+}
+
+/* Images */
+.essay-image,
+.home-image-container {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.content-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #E8ECF1;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-image:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+figcaption {
+  font-size: 0.875rem;
+  color: #6B7280;
+  font-style: italic;
+  margin-top: 0.875rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* References */
+.references {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 1px solid #E8ECF1;
+}
+
+.references h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.625rem;
+  font-weight: 600;
+  color: #1E3A5F;
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+  padding-top: 0 !important;
+  border-top: none !important;
+}
+
+.references ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.references li {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #4A5568;
+  margin-bottom: 1.25rem;
+  padding-left: 1.75rem;
+  text-indent: -1.75rem;
+}
+
+.references em {
+  font-style: italic;
+}
+
+/* About Me Specific Styles */
+.about-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.profile-picture-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.profile-picture-placeholder {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid #E8ECF1;
+  background-color: #F8FAFB;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-picture-placeholder:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.about-subheader {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  color: #A3C9F4;
+  font-weight: 400;
+  margin: 0 0 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.about-title {
+  margin-bottom: 0;
+}
+
+.about-body {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.about-body p {
+  text-align: left;
+}
+
+.about-signature {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem;
+  color: #1E3A5F;
+  font-style: italic;
+  margin-top: 2.5rem;
+  text-align: right;
+}
+
+/* Footer */
+.footer {
+  background-color: #0D1B2A;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  padding: 3rem 2rem;
+  margin-top: auto;
+}
+
+.footer p {
+  margin: 0.375rem 0;
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.footer-tagline {
+  color: #A3C9F4;
+  font-style: italic;
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .essay-selector {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-content {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .site-title {
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: center;
+  }
+
+  .nav-button {
+    font-size: 0.875rem;
+  }
+
+  .content-card {
+    margin: 100px 1rem 3rem;
+    border-radius: 6px;
+  }
+
+  .hero {
+    padding: 3rem 2rem 2.5rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-intro {
+    font-size: 1rem;
+  }
+
+  .essay {
+    padding: 2.5rem 2rem 3rem;
+  }
+
+  .essay-title {
+    font-size: 2rem;
+  }
+
+  .essay-intro,
+  .essay-body {
+    font-size: 1rem;
+  }
+
+  .essay-body h3 {
+    font-size: 1.375rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+  }
+
+  .essay-pill {
+    padding: 1.125rem 1.375rem;
+  }
+
+  .pill-title {
+    font-size: 1rem;
+  }
+
+  .pill-subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .profile-picture-placeholder {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-picture-placeholder svg {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-card {
+    margin: 100px 0.5rem 2rem;
+    border-radius: 4px;
+  }
+
+  .hero {
+    padding: 2.5rem 1.5rem 2rem;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .essay {
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .essay-title {
+    font-size: 1.75rem;
+  }
+
+  .profile-picture-placeholder {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-picture-placeholder svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .about-subheader {
+    font-size: 1rem;
+  }
+}
